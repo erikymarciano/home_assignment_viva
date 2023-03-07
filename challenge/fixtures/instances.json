@@ -1,0 +1,30 @@
+[
+    {
+        "model": "challenge.instance",
+        "pk": 1,
+        "fields": {
+            "name": "Local"
+        }
+    },
+    {
+        "model": "challenge.instance",
+        "pk": 2,
+        "fields": {
+            "name": "National"
+        }
+    },
+    {
+        "model": "challenge.instance",
+        "pk": 3,
+        "fields": {
+            "name": "Regional"
+        }
+    },
+    {
+        "model": "challenge.instance",
+        "pk": 4,
+        "fields": {
+            "name": "International"
+        }
+    }
+]

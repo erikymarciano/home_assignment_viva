@@ -1,0 +1,29 @@
+[
+    {
+        "model": "challenge.team",
+        "pk": 1,
+        "fields": {
+            "name": "Brazilian Devs",
+            "representative_name": "Luis Felipe",
+            "country": "Brazil"
+        }
+    },
+    {
+        "model": "challenge.team",
+        "pk": 2,
+        "fields": {
+            "name": "USA Code",
+            "representative_name": "Louis Philip",
+            "country": "United States"
+        }
+    },
+    {
+        "model": "challenge.team",
+        "pk": 3,
+        "fields": {
+            "name": "Lets Code",
+            "representative_name": "Ken Masters",
+            "country": "China"
+        }
+    }
+]

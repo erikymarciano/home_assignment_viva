@@ -1,0 +1,86 @@
+[
+    {
+        "model": "challenge.participant",
+        "pk": 1,
+        "fields": {
+            "first_name": "Eriky",
+            "last_name": "Marciano",
+            "id_no": "12260854745",
+            "date_birth": "1997-03-11",
+            "gender": "M",
+            "country": "Brazil"
+        }
+    },
+    {
+        "model": "challenge.participant",
+        "pk": 2,
+        "fields": {
+            "first_name": "Kayalla",
+            "last_name": "Lino",
+            "id_no": "17700561233",
+            "date_birth": "1997-02-08",
+            "gender": "F",
+            "country": "Brazil"
+        }
+    },
+    {
+        "model": "challenge.participant",
+        "pk": 3,
+        "fields": {
+            "first_name": "Beyonce",
+            "last_name": "Knowles",
+            "id_no": "083344",
+            "date_birth": "1981-10-04",
+            "gender": "F",
+            "country": "United States"
+        }
+    },
+    {
+        "model": "challenge.participant",
+        "pk": 4,
+        "fields": {
+            "first_name": "Barack",
+            "last_name": "Obama",
+            "id_no": "315623",
+            "date_birth": "1961-09-04",
+            "gender": "M",
+            "country": "United States"
+        }
+    },
+    {
+        "model": "challenge.participant",
+        "pk": 5,
+        "fields": {
+            "first_name": "Chun",
+            "last_name": "Lee",
+            "id_no": "40028922",
+            "date_birth": "1977-04-07",
+            "gender": "F",
+            "country": "China"
+        }
+    },
+    {
+        "model": "challenge.participant",
+        "pk": 6,
+        "fields": {
+            "first_name": "Kung",
+            "last_name": "Law",
+            "id_no": "1236677",
+            "date_birth": "1997-05-16",
+            "gender": "M",
+            "country": "China"
+        }
+    },
+    {
+        "model": "challenge.participant",
+        "pk": 7,
+        "fields": {
+            "first_name": "Pedro",
+            "last_name": "Ivo",
+            "id_no": "1336657",
+            "date_birth": "1994-09-12",
+            "gender": "M",
+            "country": "Brazil"
+        }
+    }
+]
