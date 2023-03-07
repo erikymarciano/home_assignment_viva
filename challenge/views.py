@@ -83,7 +83,6 @@ class TeamActions(APIView):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
     
     def delete(self, request, id):
         team = self.get_object(id)
@@ -148,7 +147,7 @@ class TeamMembersActions(APIView):
 
 class CreateCompetitionLog(APIView):
     def post(self, request):
-        preview_instances_map = {
+        required_instances_map = {
             'International': 'Regional',
             'Regional': 'National',
             'National': 'Local',
@@ -156,15 +155,15 @@ class CreateCompetitionLog(APIView):
         }
         data = json.loads(str(request.body, encoding="utf-8"))
         try:            
-            temp_team = Team.objects.get(name=data["name"])
-            temp_competition = Competition.objects.get(id=data["competition_id"])
-            preview_instance = map(temp_competition.instance, preview_instances_map)
-            if preview_instance is not None:
-                preview_competition_log = CompetitionLog.objects.get(team=temp_team, competition=Competition.objects.get(year=temp_competition.year, instance=Instance.objects.get(name=preview_instance)))
-                if preview_competition_log.score > 65:
+            team = Team.objects.get(id=data["team_id"])
+            competition = Competition.objects.get(id=data["competition_id"])
+            required_instance = required_instances_map[competition.instance.name]
+            if required_instance is not None:
+                required_competition_log = CompetitionLog.objects.get(team=team, competition=Competition.objects.get(year=competition.year, instance=Instance.objects.get(name=required_instance)))
+                if required_competition_log.score > 65:
                     CompetitionLog.create(
-                        competition=temp_competition,
-                        team=temp_team,
+                        competition=competition,
+                        team=team,
                         score=data["score"]
                     )
                     return Response(
@@ -175,20 +174,25 @@ class CreateCompetitionLog(APIView):
                 else:
                     return Response(
                     {
-                        "message": "Competition log successfully created"
+                        "message": "This team does not have a score greater than 65 in the competition of the previous instance"
                     }, 400
                     )
-
-        except Team.DoesNotExist:            
+        except Team.DoesNotExist:
             return Response(
                 {
                     "message": "Does not exist a team with this id."
                 }, 404
             )
-        except Competition.DoesNotExist:            
+        except Competition.DoesNotExist:
             return Response(
                 {
                     "message": "Does not exist a competition with this id."
+                }, 404
+            )
+        except CompetitionLog.DoesNotExist:
+            return Response(
+                {
+                    "message": "Does not have a log that references the competition of the previous instance"
                 }, 404
             )
 

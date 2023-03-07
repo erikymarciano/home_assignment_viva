@@ -8,8 +8,8 @@ class Participant(models.Model):
         ('M', 'Male'),
         ('F', 'Female')
     )
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
+    first_name = models.CharField(max_length=50)##
+    last_name = models.CharField(max_length=50)##
     id_no = models.CharField(max_length=15, unique=True)
     date_birth = models.DateField()
     gender = models.CharField(max_length=1, choices=GENDER)
@@ -20,8 +20,8 @@ class Participant(models.Model):
     
 
 class Team(models.Model):
-    name = models.CharField(max_length=150)
-    representative_name = models.CharField(max_length=150)
+    name = models.CharField(max_length=150)##
+    representative_name = models.CharField(max_length=150)##
     country = models.CharField(max_length=100)
     member = models.ManyToManyField('Participant')
     

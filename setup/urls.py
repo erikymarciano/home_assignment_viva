@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path
 from rest_framework.urlpatterns import format_suffix_patterns
-from challenge.views import TeamActions, ParticipantList, TeamList, TeamMembersActions, ParticipantActions, ListCompetitionLogs, ListCompetitionLogsFiltered
+from challenge.views import CreateCompetitionLog, TeamActions, ParticipantList, TeamList, TeamMembersActions, ParticipantActions, ListCompetitionLogs, ListCompetitionLogsFiltered
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,6 +25,7 @@ urlpatterns = [
     path('teams/', TeamList.as_view()),
     path('teams/<int:id>/', TeamActions.as_view()),
     path('teams/<int:t_id>/members/<int:m_id>/', TeamMembersActions.as_view()),
-    path('scores/<int:year>/', ListCompetitionLogs.as_view()),
-    path('scores/<int:year>/<str:instance>/', ListCompetitionLogsFiltered.as_view()),
+    path('results/<int:year>/', ListCompetitionLogs.as_view()),
+    path('results/<int:year>/<str:instance>/', ListCompetitionLogsFiltered.as_view()),
+    path('results/', CreateCompetitionLog.as_view()),
 ]
