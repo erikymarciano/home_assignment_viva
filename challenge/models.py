@@ -8,8 +8,8 @@ class Participant(models.Model):
         ('M', 'Male'),
         ('F', 'Female')
     )
-    first_name = models.CharField(max_length=50)##
-    last_name = models.CharField(max_length=50)##
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
     id_no = models.CharField(max_length=15, unique=True)
     date_birth = models.DateField()
     gender = models.CharField(max_length=1, choices=GENDER)
@@ -20,8 +20,8 @@ class Participant(models.Model):
     
 
 class Team(models.Model):
-    name = models.CharField(max_length=150)##
-    representative_name = models.CharField(max_length=150)##
+    name = models.CharField(max_length=150)
+    representative_name = models.CharField(max_length=150)
     country = models.CharField(max_length=100)
     member = models.ManyToManyField('Participant')
     
@@ -54,3 +54,6 @@ class CompetitionLog(models.Model):
     competition =  models.ForeignKey("Competition", on_delete=models.PROTECT, blank=False, null=False)
     team = models.ForeignKey("Team", on_delete=models.PROTECT, blank=False, null=False)
     score = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
+
+    def __str__(self):
+        return f'Competition Log: {self.competition} - {self.team}'

@@ -1,0 +1,34 @@
+[
+    {
+        "model": "challenge.competition",
+        "pk": 1,
+        "fields": {
+            "instance": 1,
+            "year": 2023
+        }
+    },
+    {
+        "model": "challenge.competition",
+        "pk": 2,
+        "fields": {
+            "instance": 2,
+            "year": 2023
+        }
+    },
+    {
+        "model": "challenge.competition",
+        "pk": 3,
+        "fields": {
+            "instance": 3,
+            "year": 2023
+        }
+    },
+    {
+        "model": "challenge.competition",
+        "pk": 4,
+        "fields": {
+            "instance": 4,
+            "year": 2023
+        }
+    }
+]

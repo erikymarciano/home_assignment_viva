@@ -15,17 +15,37 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path
+from rest_framework import routers, permissions
 from rest_framework.urlpatterns import format_suffix_patterns
 from challenge.views import CreateCompetitionLog, TeamActions, ParticipantList, TeamList, TeamMembersActions, ParticipantActions, ListCompetitionLogs, ListCompetitionLogsFiltered
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+
+schema_view = get_schema_view(
+   openapi.Info(
+      title="Viva Challenge",
+      default_version='v1',
+      description="Take home assignment for Viva selective process",
+      contact=openapi.Contact(email="erikymarciano@gmail.com"),
+      license=openapi.License(name="BSD License"),
+   ),
+   public=True,
+   permission_classes=[permissions.AllowAny],
+)
+
+# router = routers.DefaultRouter()
+# router.register('participants', ParticipantList, basename='participants')
+# dentro de urlpatters colocar path('', include(router.urls))
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('participants/', ParticipantList.as_view(), name='participants'),
-    path('participants/<int:id>/', ParticipantActions.as_view()),
-    path('teams/', TeamList.as_view()),
-    path('teams/<int:id>/', TeamActions.as_view()),
-    path('teams/<int:t_id>/members/<int:m_id>/', TeamMembersActions.as_view()),
-    path('results/<int:year>/', ListCompetitionLogs.as_view()),
-    path('results/<int:year>/<str:instance>/', ListCompetitionLogsFiltered.as_view()),
-    path('results/', CreateCompetitionLog.as_view()),
+    path('participants', ParticipantList.as_view(), name='participants'),
+    path('participants/<int:id>', ParticipantActions.as_view()),
+    path('teams', TeamList.as_view(), name='teams'),
+    path('teams/<int:id>', TeamActions.as_view()),
+    path('teams/<int:team_id>/members/<int:participant_id>', TeamMembersActions.as_view()),
+    path('results/<int:year>', ListCompetitionLogs.as_view()),
+    path('results/<int:year>/<str:instance>', ListCompetitionLogsFiltered.as_view()),
+    path('results', CreateCompetitionLog.as_view()),
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0)),
 ]

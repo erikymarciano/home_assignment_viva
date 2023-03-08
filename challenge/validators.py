@@ -1,19 +1,14 @@
 import re
 
-def only_letters(string):
-    return string.isalpha()
-
-def only_numbers(string):
-    return string.isnumeric()
-
-def valid_birth(date_birth):
-    """ Verify if is a valid date 0000-00-00"""
-    model = '[0-9]{4}-[0-9]{2}-[0-9]{2}'
-    response = re.findall(model, date_birth)
+def valid_country(string):
+    model = '^[A-Za-z ]*$'
+    response = re.findall(model, string)
     return response
 
-def valid_gender(gender):
-    """ Verify if is a valid gender M or F """
-    if gender == "M" or gender == "F":
+def valid_idno(string):
+    return string.isnumeric()
+
+def valid_score(score):
+    if 0 <= score <= 100:
         return True
     return False
