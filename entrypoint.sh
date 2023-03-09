@@ -10,11 +10,14 @@ then
 fi
 
 ## Running migrations
+python manage.py makemigrations
 python manage.py migrate
 
-python manage.py loaddata instances
-python manage.py loaddata initial_competitions
-python manage.py loaddata initial_participants
-python manage.py loaddata initial_teams
+## Running fixtures
+python manage.py loaddata instances.json
+python manage.py loaddata initial_competitions.json
+python manage.py loaddata initial_participants.json
+python manage.py loaddata initial_teams.json
 
-exec "$@"
+## Running the application server
+python manage.py runserver 0.0.0.0:8000

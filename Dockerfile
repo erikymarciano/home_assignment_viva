@@ -22,4 +22,5 @@ COPY entrypoint.sh /usr/src/app
 
 EXPOSE 8000
 
-CMD ["sh", "entrypoint.sh"]
+ENTRYPOINT ["sh", "/usr/src/app/entrypoint.sh"]
+# CMD ["sh", "entrypoint.sh"]

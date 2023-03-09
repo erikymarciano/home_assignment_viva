@@ -59,7 +59,7 @@ class ParticipantListTestCase(APITestCase):
             'gender':'F',
             'country':'Brazil'
         }
-        response = self.client.post(self.list_url, data=data)
+        response = self.client.post('/participants', data=data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
 class ParticipantActionsTestCase(APITestCase):
