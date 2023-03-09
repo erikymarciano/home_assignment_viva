@@ -1,4 +1,4 @@
-if [ "$DATABASE" = "postgres" ]
+if [ "$SQL_DATABASE" = "local_dev" ]
 then
     echo "Waiting for postgres..."
 
