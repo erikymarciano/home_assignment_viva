@@ -10,7 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+import os
+from dotenv import load_dotenv
 from pathlib import Path
+
+load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -78,11 +82,11 @@ WSGI_APPLICATION = 'setup.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'challengeviva', 
-        'USER': 'postgres',
-        'PASSWORD': 'erikypc',
-        'HOST': 'localhost', 
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'local_dev', 
+        'USER': 'local_dev',
+        'PASSWORD': 'local_dev',
+        'HOST': 'local_db', 
         'PORT': '5432',
     }
 }

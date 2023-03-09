@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, re_path
 from rest_framework import routers, permissions
 from rest_framework.urlpatterns import format_suffix_patterns
-from challenge.views import CreateCompetitionLog, TeamActions, ParticipantList, TeamList, TeamMembersActions, ParticipantActions, ListCompetitionLogs, ListCompetitionLogsFiltered
+from challenge.views import CreateCompetitionLog, TeamActions, ParticipantList, TeamList, CompetitionList, CompetitionActions, TeamMembersActions, ParticipantActions, ListCompetitionLogs, ListCompetitionLogsFiltered
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
@@ -44,8 +44,10 @@ urlpatterns = [
     path('teams', TeamList.as_view(), name='teams'),
     path('teams/<int:id>', TeamActions.as_view()),
     path('teams/<int:team_id>/members/<int:participant_id>', TeamMembersActions.as_view()),
+    path('competitions', CompetitionList.as_view(), name='teams'),
+    path('competitions/<int:id>', CompetitionActions.as_view()),
+    path('competitions/<int:competition_id>/results/<int:team_id>', CreateCompetitionLog.as_view()),
     path('results/<int:year>', ListCompetitionLogs.as_view()),
-    path('results/<int:year>/<str:instance>', ListCompetitionLogsFiltered.as_view()),
-    path('results', CreateCompetitionLog.as_view()),
-    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0)),
+    path('results/<int:year>/<str:instance>', ListCompetitionLogsFiltered.as_view()),    
+    path('swagger', schema_view.with_ui('swagger', cache_timeout=0)),
 ]
